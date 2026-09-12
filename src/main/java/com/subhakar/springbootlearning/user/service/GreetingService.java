@@ -1,7 +1,7 @@
-package com.subhakar.springbootlearning.service;
+package com.subhakar.springbootlearning.user.service;
 
-import com.subhakar.springbootlearning.dto.GreetingRequest;
-import com.subhakar.springbootlearning.dto.GreetingResponse;
+import com.subhakar.springbootlearning.user.dto.GreetingRequest;
+import com.subhakar.springbootlearning.user.dto.GreetingResponse;
 import org.springframework.stereotype.Service;
 
 @Service

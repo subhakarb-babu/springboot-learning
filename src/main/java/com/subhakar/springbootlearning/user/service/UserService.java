@@ -1,13 +1,14 @@
-package com.subhakar.springbootlearning.service;
+package com.subhakar.springbootlearning.user.service;
 
-import com.subhakar.springbootlearning.dto.CreateUserRequest;
-import com.subhakar.springbootlearning.dto.CreateUserResponse;
-import com.subhakar.springbootlearning.dto.GetUserResponse;
-import com.subhakar.springbootlearning.dto.UpdateUserRequest;
-import com.subhakar.springbootlearning.entity.User;
-import com.subhakar.springbootlearning.exceptions.UserNotFoundException;
-import com.subhakar.springbootlearning.repository.UserRepository;
-import org.springframework.http.ResponseEntity;
+import com.subhakar.springbootlearning.user.dto.CreateUserRequest;
+import com.subhakar.springbootlearning.user.dto.CreateUserResponse;
+import com.subhakar.springbootlearning.user.dto.GetUserResponse;
+import com.subhakar.springbootlearning.user.dto.UpdateUserRequest;
+import com.subhakar.springbootlearning.user.entity.User;
+import com.subhakar.springbootlearning.user.exceptions.UserNotFoundException;
+import com.subhakar.springbootlearning.user.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -56,6 +57,20 @@ public class UserService {
                 user.getEmail(),
                 user.getAge()
         );
+    }
+
+    public Page<GetUserResponse> getUsers(Pageable pageable) {
+
+        Page<User> users = userRepository.findAll(pageable);
+
+        return users.map(
+                user -> new GetUserResponse(
+                        user.getId(),
+                        user.getName(),
+                        user.getEmail(),
+                        user.getAge()
+                ));
+
     }
 
     public CreateUserResponse createUser(CreateUserRequest request) {

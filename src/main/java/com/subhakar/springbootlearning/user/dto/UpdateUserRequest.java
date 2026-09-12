@@ -1,4 +1,4 @@
-package com.subhakar.springbootlearning.dto;
+package com.subhakar.springbootlearning.user.dto;
 
 import jakarta.validation.constraints.*;
 

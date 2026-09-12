@@ -1,11 +1,13 @@
-package com.subhakar.springbootlearning.controller;
+package com.subhakar.springbootlearning.user.controller;
 
-import com.subhakar.springbootlearning.dto.CreateUserRequest;
-import com.subhakar.springbootlearning.dto.CreateUserResponse;
-import com.subhakar.springbootlearning.dto.GetUserResponse;
-import com.subhakar.springbootlearning.dto.UpdateUserRequest;
-import com.subhakar.springbootlearning.service.UserService;
+import com.subhakar.springbootlearning.user.dto.CreateUserRequest;
+import com.subhakar.springbootlearning.user.dto.CreateUserResponse;
+import com.subhakar.springbootlearning.user.dto.GetUserResponse;
+import com.subhakar.springbootlearning.user.dto.UpdateUserRequest;
+import com.subhakar.springbootlearning.user.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +37,12 @@ public class UserController {
     @GetMapping("/name/{name}")
     public ResponseEntity<GetUserResponse> getUserByName(@PathVariable("name") String name){
         GetUserResponse response = userService.getUserByName(name);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<GetUserResponse>> getUsers(Pageable pageable) {
+        Page<GetUserResponse> response = userService.getUsers(pageable);
         return ResponseEntity.ok(response);
     }
 

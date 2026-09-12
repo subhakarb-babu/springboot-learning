@@ -1,6 +1,6 @@
-package com.subhakar.springbootlearning.repository;
+package com.subhakar.springbootlearning.user.repository;
 
-import com.subhakar.springbootlearning.entity.User;
+import com.subhakar.springbootlearning.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,8 +1,8 @@
-package com.subhakar.springbootlearning.controller;
+package com.subhakar.springbootlearning.user.controller;
 
-import com.subhakar.springbootlearning.dto.ThankRequest;
-import com.subhakar.springbootlearning.dto.ThankResponse;
-import com.subhakar.springbootlearning.service.ThankService;
+import com.subhakar.springbootlearning.user.dto.ThankRequest;
+import com.subhakar.springbootlearning.user.dto.ThankResponse;
+import com.subhakar.springbootlearning.user.service.ThankService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,7 @@
-package com.subhakar.springbootlearning.service;
+package com.subhakar.springbootlearning.user.service;
 
-import com.subhakar.springbootlearning.dto.ThankRequest;
-import com.subhakar.springbootlearning.dto.ThankResponse;
+import com.subhakar.springbootlearning.user.dto.ThankRequest;
+import com.subhakar.springbootlearning.user.dto.ThankResponse;
 import org.springframework.stereotype.Service;
 
 @Service

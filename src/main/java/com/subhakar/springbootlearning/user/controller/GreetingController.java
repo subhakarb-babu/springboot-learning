@@ -1,8 +1,8 @@
-package com.subhakar.springbootlearning.controller;
+package com.subhakar.springbootlearning.user.controller;
 
-import com.subhakar.springbootlearning.dto.GreetingRequest;
-import com.subhakar.springbootlearning.dto.GreetingResponse;
-import com.subhakar.springbootlearning.service.GreetingService;
+import com.subhakar.springbootlearning.user.dto.GreetingRequest;
+import com.subhakar.springbootlearning.user.dto.GreetingResponse;
+import com.subhakar.springbootlearning.user.service.GreetingService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

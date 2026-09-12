@@ -1,8 +1,10 @@
-package com.subhakar.springbootlearning.dto;
+package com.subhakar.springbootlearning.order_management.dto;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-public class CreateUserRequest {
+public class CreateCustomerRequest{
 
     @NotBlank(message = "Name is required")
     @Size(max = 100, message = "Name must not exceed 100 characters")
@@ -12,10 +14,6 @@ public class CreateUserRequest {
     @Email(message = "Please provide a valid email address")
     @Size(max = 255, message = "Email must not exceed 255 characters")
     private String email;
-
-    @NotNull(message = "Age is required")
-    @Min(value = 18, message = "Age must be at least 18")
-    private Integer age;
 
     public String getName() {
         return name;
@@ -33,11 +31,4 @@ public class CreateUserRequest {
         this.email = email;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

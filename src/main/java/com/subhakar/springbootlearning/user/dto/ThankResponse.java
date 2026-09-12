@@ -1,4 +1,4 @@
-package com.subhakar.springbootlearning.dto;
+package com.subhakar.springbootlearning.user.dto;
 
 public record ThankResponse(
         String message

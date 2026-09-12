@@ -1,4 +1,4 @@
-package com.subhakar.springbootlearning.exceptions;
+package com.subhakar.springbootlearning.user.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
 

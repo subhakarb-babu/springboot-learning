@@ -1,13 +1,13 @@
-package com.subhakar.springbootlearning.dto;
+package com.subhakar.springbootlearning.user.dto;
 
-public class GetUserResponse {
+public class CreateUserResponse {
 
     private Long id;
     private String name;
     private String email;
     private int age;
 
-    public GetUserResponse(Long id, String name, String email, int age) {
+    public CreateUserResponse(Long id, String name, String email, int age) {
         this.id = id;
         this.name = name;
         this.email = email;
