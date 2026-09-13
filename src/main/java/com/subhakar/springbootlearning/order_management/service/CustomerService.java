@@ -51,4 +51,12 @@ public class CustomerService{
         );
     }
 
+    public void deleteCustomer(UUID id){
+
+        Customer customer = customerRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Customer Not Found"));
+
+        customerRepository.delete(customer);
+    }
+
 }

@@ -5,6 +5,7 @@ import com.subhakar.springbootlearning.order_management.dto.CreateCustomerRespon
 import com.subhakar.springbootlearning.order_management.dto.GetCustomerResponse;
 import com.subhakar.springbootlearning.order_management.dto.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.service.CustomerService;
+import com.subhakar.springbootlearning.user.repository.UserRepository;
 import com.subhakar.springbootlearning.user.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class CustomerController{
 
     private final CustomerService customerService;
 
-    public CustomerController(CustomerService customerService, UserService userService){
+    public CustomerController(CustomerService customerService, UserService userService, UserRepository userRepository){
         this.customerService = customerService;
     }
 
@@ -43,5 +44,13 @@ public class CustomerController{
         CreateCustomerResponse response = customerService.createCustomer(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable("id") UUID id){
+        customerService.deleteCustomer(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 
 }
