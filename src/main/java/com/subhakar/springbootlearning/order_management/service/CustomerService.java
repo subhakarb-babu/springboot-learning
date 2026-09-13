@@ -3,9 +3,9 @@ package com.subhakar.springbootlearning.order_management.service;
 import com.subhakar.springbootlearning.order_management.dto.CreateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.dto.CreateCustomerResponse;
 import com.subhakar.springbootlearning.order_management.dto.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.entity.Customer;
 import com.subhakar.springbootlearning.order_management.repository.CustomerRepository;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -34,6 +34,20 @@ public class CustomerService{
                 savedCustomer.getId(),
                 savedCustomer.getName(),
                 savedCustomer.getEmail()
+        );
+    }
+
+    public GetCustomerResponse updateCustomer(UUID id, UpdateCustomerRequest request){
+
+        Customer existingCustomer = customerRepository.findById(id).
+                orElseThrow(() -> new RuntimeException("Customer Not Found"));
+
+        existingCustomer.setName(request.getName());
+        existingCustomer.setEmail(request.getEmail());
+
+        Customer savedcustomer =  customerRepository.save(existingCustomer);
+        return new GetCustomerResponse(
+                savedcustomer.getId(),savedcustomer.getName(), savedcustomer.getEmail()
         );
     }
 

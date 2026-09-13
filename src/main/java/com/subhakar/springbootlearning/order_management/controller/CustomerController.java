@@ -3,6 +3,7 @@ package com.subhakar.springbootlearning.order_management.controller;
 import com.subhakar.springbootlearning.order_management.dto.CreateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.dto.CreateCustomerResponse;
 import com.subhakar.springbootlearning.order_management.dto.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.service.CustomerService;
 import com.subhakar.springbootlearning.user.service.UserService;
 import jakarta.validation.Valid;
@@ -20,6 +21,15 @@ public class CustomerController{
 
     public CustomerController(CustomerService customerService, UserService userService){
         this.customerService = customerService;
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<GetCustomerResponse> updateCustomer(
+            @PathVariable("id") UUID id,
+            @Valid @RequestBody UpdateCustomerRequest request
+    ){
+        GetCustomerResponse response = customerService.updateCustomer(id,request);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("{id}")
