@@ -1,4 +1,4 @@
-package com.subhakar.springbootlearning.order_management.dto.Customer;
+package com.subhakar.springbootlearning.order_management.dto.customer;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package com.subhakar.springbootlearning.order_management.dto.Product;
+package com.subhakar.springbootlearning.order_management.dto.product;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

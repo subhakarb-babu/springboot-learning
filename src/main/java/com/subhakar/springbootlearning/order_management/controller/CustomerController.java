@@ -1,12 +1,10 @@
 package com.subhakar.springbootlearning.order_management.controller;
 
-import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerRequest;
-import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.Customer.GetCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.Customer.UpdateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.customer.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.customer.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.service.CustomerService;
-import com.subhakar.springbootlearning.user.repository.UserRepository;
-import com.subhakar.springbootlearning.user.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

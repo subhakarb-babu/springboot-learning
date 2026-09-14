@@ -1,4 +1,4 @@
-package com.subhakar.springbootlearning.order_management.dto.Product;
+package com.subhakar.springbootlearning.order_management.dto.product;
 
 import java.math.BigDecimal;
 import java.util.UUID;

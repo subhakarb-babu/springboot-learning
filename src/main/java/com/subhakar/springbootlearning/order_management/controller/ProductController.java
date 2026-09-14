@@ -1,12 +1,11 @@
 package com.subhakar.springbootlearning.order_management.controller;
 
-import com.subhakar.springbootlearning.order_management.dto.Product.CreateProductRequest;
-import com.subhakar.springbootlearning.order_management.dto.Product.CreateProductResponse;
-import com.subhakar.springbootlearning.order_management.dto.Product.GetProductResponse;
+import com.subhakar.springbootlearning.order_management.dto.product.CreateProductRequest;
+import com.subhakar.springbootlearning.order_management.dto.product.CreateProductResponse;
+import com.subhakar.springbootlearning.order_management.dto.product.GetProductResponse;
 import com.subhakar.springbootlearning.order_management.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

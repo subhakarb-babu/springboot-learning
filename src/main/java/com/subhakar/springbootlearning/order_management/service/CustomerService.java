@@ -1,10 +1,11 @@
 package com.subhakar.springbootlearning.order_management.service;
 
-import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerRequest;
-import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.Customer.GetCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.Customer.UpdateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.customer.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.customer.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.entity.Customer;
+import com.subhakar.springbootlearning.order_management.exceptions.customer.CustomerNotFoundException;
 import com.subhakar.springbootlearning.order_management.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class CustomerService{
 
     public GetCustomerResponse getCustomer(UUID id){
         Customer customer = customerRepository.findById(id).orElseThrow(() ->
-                new RuntimeException("Customer not found"));
+                new CustomerNotFoundException("Customer not found"));
 
         return new GetCustomerResponse(customer.getId(),customer.getName(), customer.getEmail());
     }
@@ -40,7 +41,7 @@ public class CustomerService{
     public GetCustomerResponse updateCustomer(UUID id, UpdateCustomerRequest request){
 
         Customer existingCustomer = customerRepository.findById(id).
-                orElseThrow(() -> new RuntimeException("Customer Not Found"));
+                orElseThrow(() -> new CustomerNotFoundException("Customer Not Found"));
 
         existingCustomer.setName(request.getName());
         existingCustomer.setEmail(request.getEmail());
@@ -54,7 +55,7 @@ public class CustomerService{
     public void deleteCustomer(UUID id){
 
         Customer customer = customerRepository.findById(id).orElseThrow(() ->
-                new RuntimeException("Customer Not Found"));
+                new CustomerNotFoundException("Customer Not Found"));
 
         customerRepository.delete(customer);
     }
