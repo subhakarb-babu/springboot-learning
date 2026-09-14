@@ -20,13 +20,13 @@ public class Product{
     private BigDecimal price;
 
     @Column(name = "stock_quantity")
-    private int stockQuantity;
+    private Integer stockQuantity;
 
     public Product(){
 
     }
 
-    public Product(String name, BigDecimal price, int stockQuantity){
+    public Product(String name, BigDecimal price, Integer stockQuantity){
         this.name = name;
         this.price=price;
         this.stockQuantity=stockQuantity;
@@ -35,7 +35,7 @@ public class Product{
     public UUID getId(){return this.id;}
     public String getName(){return this.name;}
     public BigDecimal getPrice(){return this.price;}
-    public int getStockQuantity(){return this.stockQuantity;}
+    public Integer getStockQuantity(){return this.stockQuantity;}
 
     public void setName(String name){
         this.name=name;
@@ -43,7 +43,7 @@ public class Product{
     public void setPrice(BigDecimal price){
         this.price=price;
     }
-    public void setStockQuantity(int stockQuantity){
+    public void setStockQuantity(Integer stockQuantity){
         this.stockQuantity=stockQuantity;
     }
 

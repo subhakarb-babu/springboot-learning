@@ -8,9 +8,9 @@ public class CreateProductResponse {
     private UUID id;
     private String name;
     private BigDecimal price;
-    private int stockQuantity;
+    private Integer stockQuantity;
 
-    public CreateProductResponse(UUID id, String name, BigDecimal price, int stockQuantity) {
+    public CreateProductResponse(UUID id, String name, BigDecimal price, Integer stockQuantity) {
         this.id = id;
         this.name = name;
         this.price=price;
@@ -29,7 +29,7 @@ public class CreateProductResponse {
         return price;
     }
 
-    public int getStockQuantity() {
+    public Integer getStockQuantity() {
         return stockQuantity;
     }
 }

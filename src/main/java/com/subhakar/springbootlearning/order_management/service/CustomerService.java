@@ -38,17 +38,26 @@ public class CustomerService{
         );
     }
 
-    public GetCustomerResponse updateCustomer(UUID id, UpdateCustomerRequest request){
+    public GetCustomerResponse updateCustomer(UUID id, UpdateCustomerRequest request) {
 
-        Customer existingCustomer = customerRepository.findById(id).
-                orElseThrow(() -> new CustomerNotFoundException("Customer Not Found"));
+        Customer existingCustomer = customerRepository.findById(id)
+                .orElseThrow(() ->
+                        new CustomerNotFoundException("Customer not found"));
 
-        existingCustomer.setName(request.getName());
-        existingCustomer.setEmail(request.getEmail());
+        if (request.getName() != null) {
+            existingCustomer.setName(request.getName());
+        }
 
-        Customer savedcustomer =  customerRepository.save(existingCustomer);
+        if (request.getEmail() != null) {
+            existingCustomer.setEmail(request.getEmail());
+        }
+
+        Customer savedCustomer = customerRepository.save(existingCustomer);
+
         return new GetCustomerResponse(
-                savedcustomer.getId(),savedcustomer.getName(), savedcustomer.getEmail()
+                savedCustomer.getId(),
+                savedCustomer.getName(),
+                savedCustomer.getEmail()
         );
     }
 

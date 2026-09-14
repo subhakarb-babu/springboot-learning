@@ -8,10 +8,10 @@ public class GetProductResponse{
     private UUID id;
     private String name;
     private BigDecimal price;
-    private int stockQuantity;
+    private Integer stockQuantity;
 
     public GetProductResponse(
-            UUID id, String name, BigDecimal price, int stockQuantity
+            UUID id, String name, BigDecimal price, Integer stockQuantity
     ){
         this.id=id;
         this.name=name;
@@ -28,7 +28,7 @@ public class GetProductResponse{
     public BigDecimal getPrice(){
         return  this.price;
     }
-    public int getStockQuantity(){
+    public Integer getStockQuantity(){
         return  this.stockQuantity;
     }
 }

@@ -16,7 +16,7 @@ public class CreateProductRequest{
     private BigDecimal price;
 
     @Min(value = 1)
-    private int stockQuantity;
+    private Integer stockQuantity;
 
     public String getName(){
         return this.name;
@@ -24,7 +24,7 @@ public class CreateProductRequest{
     public BigDecimal getPrice(){
         return this.price;
     }
-    public int getStockQuantity(){
+    public Integer getStockQuantity(){
         return this.stockQuantity;
     }
 
@@ -34,7 +34,7 @@ public class CreateProductRequest{
     public void setPrice(BigDecimal price){
         this.price=price;
     }
-    public void setStockQuantity(int stockQuantity){
+    public void setStockQuantity(Integer stockQuantity){
         this.stockQuantity=stockQuantity;
     }
 }

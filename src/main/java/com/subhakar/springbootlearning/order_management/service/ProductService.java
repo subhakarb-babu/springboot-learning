@@ -3,9 +3,11 @@ package com.subhakar.springbootlearning.order_management.service;
 import com.subhakar.springbootlearning.order_management.dto.product.CreateProductRequest;
 import com.subhakar.springbootlearning.order_management.dto.product.CreateProductResponse;
 import com.subhakar.springbootlearning.order_management.dto.product.GetProductResponse;
+import com.subhakar.springbootlearning.order_management.dto.product.UpdateProductRequest;
 import com.subhakar.springbootlearning.order_management.entity.Product;
 import com.subhakar.springbootlearning.order_management.exceptions.product.ProductNotFoundException;
 import com.subhakar.springbootlearning.order_management.repository.ProductRepository;
+import jakarta.validation.constraints.Null;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -44,6 +46,36 @@ public class ProductService{
                 savedProduct.getName(),
                 savedProduct.getPrice(),
                 savedProduct.getStockQuantity());
+    }
+
+    public GetProductResponse updateProduct(UUID id, UpdateProductRequest request){
+        Product existingProduct = productRepository.findById(id).orElseThrow(
+                () -> new ProductNotFoundException("Product Not Found"));
+        if(request.getName() != null){
+            existingProduct.setName(request.getName());
+        }
+        if(request.getPrice() != null){
+            existingProduct.setPrice(request.getPrice());
+        }
+        if (request.getStockQuantity() != null) {
+            existingProduct.setStockQuantity(request.getStockQuantity());
+        }
+
+        Product savedProduct = productRepository.save(existingProduct);
+        return new GetProductResponse(
+                savedProduct.getId(),
+                savedProduct.getName(),
+                savedProduct.getPrice(),
+                savedProduct.getStockQuantity()
+        );
+    }
+
+    public void deleteProduct(UUID id){
+        Product product = productRepository.findById(id).orElseThrow(() ->
+                new ProductNotFoundException("Product Not Found")
+        );
+
+        productRepository.delete(product);
     }
 
 }
