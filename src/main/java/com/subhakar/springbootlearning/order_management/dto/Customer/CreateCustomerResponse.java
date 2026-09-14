@@ -1,4 +1,4 @@
-package com.subhakar.springbootlearning.order_management.dto;
+package com.subhakar.springbootlearning.order_management.dto.Customer;
 
 import java.util.UUID;
 

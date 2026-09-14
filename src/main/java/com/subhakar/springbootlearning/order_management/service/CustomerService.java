@@ -1,9 +1,9 @@
 package com.subhakar.springbootlearning.order_management.service;
 
-import com.subhakar.springbootlearning.order_management.dto.CreateCustomerRequest;
-import com.subhakar.springbootlearning.order_management.dto.CreateCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.GetCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.UpdateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.Customer.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.Customer.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.entity.Customer;
 import com.subhakar.springbootlearning.order_management.repository.CustomerRepository;
 import org.springframework.stereotype.Service;

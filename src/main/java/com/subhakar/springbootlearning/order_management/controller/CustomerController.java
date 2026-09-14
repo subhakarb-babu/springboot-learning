@@ -1,9 +1,9 @@
 package com.subhakar.springbootlearning.order_management.controller;
 
-import com.subhakar.springbootlearning.order_management.dto.CreateCustomerRequest;
-import com.subhakar.springbootlearning.order_management.dto.CreateCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.GetCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.UpdateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerRequest;
+import com.subhakar.springbootlearning.order_management.dto.Customer.CreateCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.Customer.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.Customer.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.service.CustomerService;
 import com.subhakar.springbootlearning.user.repository.UserRepository;
 import com.subhakar.springbootlearning.user.service.UserService;
@@ -20,7 +20,7 @@ public class CustomerController{
 
     private final CustomerService customerService;
 
-    public CustomerController(CustomerService customerService, UserService userService, UserRepository userRepository){
+    public CustomerController(CustomerService customerService){
         this.customerService = customerService;
     }
 

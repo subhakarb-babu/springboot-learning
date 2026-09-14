@@ -1,7 +1,6 @@
 package com.subhakar.springbootlearning.order_management.entity;
 
 import jakarta.persistence.*;
-
 import java.util.UUID;
 
 @Entity
