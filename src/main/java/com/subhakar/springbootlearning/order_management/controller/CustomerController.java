@@ -1,8 +1,7 @@
 package com.subhakar.springbootlearning.order_management.controller;
 
 import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerRequest;
-import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.customer.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.customer.CustomerResponse;
 import com.subhakar.springbootlearning.order_management.dto.customer.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.service.CustomerService;
 import jakarta.validation.Valid;
@@ -23,23 +22,23 @@ public class CustomerController{
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<GetCustomerResponse> updateCustomer(
+    public ResponseEntity<CustomerResponse> updateCustomer(
             @PathVariable("id") UUID id,
             @Valid @RequestBody UpdateCustomerRequest request
     ){
-        GetCustomerResponse response = customerService.updateCustomer(id,request);
+        CustomerResponse response = customerService.updateCustomer(id,request);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<GetCustomerResponse> getCustomer(@PathVariable("id") UUID id){
-        GetCustomerResponse response = customerService.getCustomer(id);
+    public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("id") UUID id){
+        CustomerResponse response = customerService.getCustomer(id);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping
-    public ResponseEntity<CreateCustomerResponse> createCustomer(@Valid @RequestBody CreateCustomerRequest request){
-        CreateCustomerResponse response = customerService.createCustomer(request);
+    public ResponseEntity<CustomerResponse> createCustomer(@Valid @RequestBody CreateCustomerRequest request){
+        CustomerResponse response = customerService.createCustomer(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

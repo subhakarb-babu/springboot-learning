@@ -1,8 +1,7 @@
 package com.subhakar.springbootlearning.order_management.service;
 
 import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerRequest;
-import com.subhakar.springbootlearning.order_management.dto.customer.CreateCustomerResponse;
-import com.subhakar.springbootlearning.order_management.dto.customer.GetCustomerResponse;
+import com.subhakar.springbootlearning.order_management.dto.customer.CustomerResponse;
 import com.subhakar.springbootlearning.order_management.dto.customer.UpdateCustomerRequest;
 import com.subhakar.springbootlearning.order_management.entity.Customer;
 import com.subhakar.springbootlearning.order_management.exceptions.customer.CustomerNotFoundException;
@@ -20,25 +19,25 @@ public class CustomerService{
         this.customerRepository = customerRepository;
     }
 
-    public GetCustomerResponse getCustomer(UUID id){
+    public CustomerResponse getCustomer(UUID id){
         Customer customer = customerRepository.findById(id).orElseThrow(() ->
                 new CustomerNotFoundException("Customer not found"));
 
-        return new GetCustomerResponse(customer.getId(),customer.getName(), customer.getEmail());
+        return new CustomerResponse(customer.getId(),customer.getName(), customer.getEmail());
     }
 
-    public CreateCustomerResponse createCustomer(CreateCustomerRequest request){
+    public CustomerResponse createCustomer(CreateCustomerRequest request){
         Customer customer = new Customer(request.getName(), request.getEmail());
         Customer savedCustomer = customerRepository.save(customer);
 
-        return new CreateCustomerResponse(
+        return new CustomerResponse(
                 savedCustomer.getId(),
                 savedCustomer.getName(),
                 savedCustomer.getEmail()
         );
     }
 
-    public GetCustomerResponse updateCustomer(UUID id, UpdateCustomerRequest request) {
+    public CustomerResponse updateCustomer(UUID id, UpdateCustomerRequest request) {
 
         Customer existingCustomer = customerRepository.findById(id)
                 .orElseThrow(() ->
@@ -54,7 +53,7 @@ public class CustomerService{
 
         Customer savedCustomer = customerRepository.save(existingCustomer);
 
-        return new GetCustomerResponse(
+        return new CustomerResponse(
                 savedCustomer.getId(),
                 savedCustomer.getName(),
                 savedCustomer.getEmail()

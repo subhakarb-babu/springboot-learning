@@ -1,13 +1,11 @@
 package com.subhakar.springbootlearning.order_management.service;
 
 import com.subhakar.springbootlearning.order_management.dto.product.CreateProductRequest;
-import com.subhakar.springbootlearning.order_management.dto.product.CreateProductResponse;
-import com.subhakar.springbootlearning.order_management.dto.product.GetProductResponse;
+import com.subhakar.springbootlearning.order_management.dto.product.ProductResponse;
 import com.subhakar.springbootlearning.order_management.dto.product.UpdateProductRequest;
 import com.subhakar.springbootlearning.order_management.entity.Product;
 import com.subhakar.springbootlearning.order_management.exceptions.product.ProductNotFoundException;
 import com.subhakar.springbootlearning.order_management.repository.ProductRepository;
-import jakarta.validation.constraints.Null;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -21,11 +19,11 @@ public class ProductService{
         this.productRepository = productRepository;
     }
 
-    public GetProductResponse getProduct(UUID id){
+    public ProductResponse getProduct(UUID id){
         Product product = productRepository.findById(id).orElseThrow(() ->
                 new ProductNotFoundException("Product Not Found"));
 
-        return new GetProductResponse(
+        return new ProductResponse(
                 product.getId(),
                 product.getName(),
                 product.getPrice(),
@@ -33,7 +31,7 @@ public class ProductService{
         );
     }
 
-    public CreateProductResponse createProduct(CreateProductRequest request){
+    public ProductResponse createProduct(CreateProductRequest request){
         Product product = new Product(
                 request.getName(),
                 request.getPrice(),
@@ -41,14 +39,14 @@ public class ProductService{
         );
 
         Product savedProduct=productRepository.save(product);
-        return new CreateProductResponse(
+        return new ProductResponse(
                 savedProduct.getId(),
                 savedProduct.getName(),
                 savedProduct.getPrice(),
                 savedProduct.getStockQuantity());
     }
 
-    public GetProductResponse updateProduct(UUID id, UpdateProductRequest request){
+    public ProductResponse updateProduct(UUID id, UpdateProductRequest request){
         Product existingProduct = productRepository.findById(id).orElseThrow(
                 () -> new ProductNotFoundException("Product Not Found"));
         if(request.getName() != null){
@@ -62,7 +60,7 @@ public class ProductService{
         }
 
         Product savedProduct = productRepository.save(existingProduct);
-        return new GetProductResponse(
+        return new ProductResponse(
                 savedProduct.getId(),
                 savedProduct.getName(),
                 savedProduct.getPrice(),

@@ -1,8 +1,7 @@
 package com.subhakar.springbootlearning.order_management.controller;
 
 import com.subhakar.springbootlearning.order_management.dto.product.CreateProductRequest;
-import com.subhakar.springbootlearning.order_management.dto.product.CreateProductResponse;
-import com.subhakar.springbootlearning.order_management.dto.product.GetProductResponse;
+import com.subhakar.springbootlearning.order_management.dto.product.ProductResponse;
 import com.subhakar.springbootlearning.order_management.dto.product.UpdateProductRequest;
 import com.subhakar.springbootlearning.order_management.service.ProductService;
 import jakarta.validation.Valid;
@@ -23,27 +22,27 @@ public class ProductController{
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetProductResponse> getProduct(
+    public ResponseEntity<ProductResponse> getProduct(
             @PathVariable("id") UUID id
     ){
-        GetProductResponse response = productService.getProduct(id);
+        ProductResponse response = productService.getProduct(id);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping
-    public ResponseEntity<CreateProductResponse> createProduct(
+    public ResponseEntity<ProductResponse> createProduct(
             @Valid @RequestBody CreateProductRequest request
             ){
-        CreateProductResponse response = productService.createProduct(request);
+        ProductResponse response = productService.createProduct(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<GetProductResponse> updateProduct(
+    public ResponseEntity<ProductResponse> updateProduct(
             @PathVariable("id") UUID id,
             @Valid @RequestBody UpdateProductRequest request
             ){
-        GetProductResponse response = productService.updateProduct(id, request);
+        ProductResponse response = productService.updateProduct(id, request);
         return ResponseEntity.ok(response);
     }
 

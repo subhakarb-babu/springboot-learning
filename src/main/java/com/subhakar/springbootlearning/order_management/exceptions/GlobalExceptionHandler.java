@@ -1,7 +1,9 @@
 package com.subhakar.springbootlearning.order_management.exceptions;
 
 import com.subhakar.springbootlearning.order_management.exceptions.customer.CustomerNotFoundException;
+import com.subhakar.springbootlearning.order_management.exceptions.order.OrderNotFoundException;
 import com.subhakar.springbootlearning.order_management.exceptions.product.ProductNotFoundException;
+import jakarta.persistence.Entity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleProductNotFound(ProductNotFoundException ex){
         ErrorResponse error = new ErrorResponse(404,ex.getMessage(),LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleOrderNotFound(OrderNotFoundException ex){
+        ErrorResponse error = new ErrorResponse(404, ex.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 }

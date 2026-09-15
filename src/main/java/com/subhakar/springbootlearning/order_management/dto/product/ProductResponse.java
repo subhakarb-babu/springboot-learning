@@ -3,14 +3,14 @@ package com.subhakar.springbootlearning.order_management.dto.product;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class GetProductResponse{
+public class ProductResponse {
 
     private UUID id;
     private String name;
     private BigDecimal price;
     private Integer stockQuantity;
 
-    public GetProductResponse(
+    public ProductResponse(
             UUID id, String name, BigDecimal price, Integer stockQuantity
     ){
         this.id=id;
