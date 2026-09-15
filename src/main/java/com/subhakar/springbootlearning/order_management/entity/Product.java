@@ -22,6 +22,9 @@ public class Product{
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
 
+    @Version
+    private Long version;
+
     public Product(){
 
     }

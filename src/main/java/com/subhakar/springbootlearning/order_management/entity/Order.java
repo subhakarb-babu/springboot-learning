@@ -1,6 +1,9 @@
 package com.subhakar.springbootlearning.order_management.entity;
 
+import com.subhakar.springbootlearning.order_management.enums.OrderStatus;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,8 +21,10 @@ public class Order {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "status", columnDefinition = "order_status")
+    private OrderStatus status;
 
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
@@ -27,11 +32,22 @@ public class Order {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    public Order(Customer customer,OrderStatus status,BigDecimal totalAmount, LocalDateTime CreatedAt){
+        this.customer=customer;
+        this.status=status;
+        this.totalAmount=totalAmount;
+        this.createdAt=createdAt;
+
+    }
+    public Order(){
+
+    }
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 
@@ -51,7 +67,7 @@ public class Order {
         return customer;
     }
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 

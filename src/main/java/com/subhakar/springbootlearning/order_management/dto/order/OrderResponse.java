@@ -1,5 +1,7 @@
 package com.subhakar.springbootlearning.order_management.dto.order;
 
+import com.subhakar.springbootlearning.order_management.enums.OrderStatus;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -8,7 +10,7 @@ public class OrderResponse {
 
     private UUID id;
     private UUID customerId;
-    private String status;
+    private OrderStatus status;
     private BigDecimal totalAmount;
     private LocalDateTime createdAt;
 
@@ -28,11 +30,11 @@ public class OrderResponse {
         this.customerId = customerId;
     }
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

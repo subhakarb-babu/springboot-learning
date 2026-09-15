@@ -19,11 +19,18 @@ public class CustomerService{
         this.customerRepository = customerRepository;
     }
 
-    public CustomerResponse getCustomer(UUID id){
+    public CustomerResponse getCustomerRes(UUID id){
         Customer customer = customerRepository.findById(id).orElseThrow(() ->
                 new CustomerNotFoundException("Customer not found"));
 
         return new CustomerResponse(customer.getId(),customer.getName(), customer.getEmail());
+    }
+
+    public Customer getCustomer(UUID id){
+        Customer customer = customerRepository.findById(id).orElseThrow(() ->
+                new CustomerNotFoundException("Customer not found"));
+
+        return customer;
     }
 
     public CustomerResponse createCustomer(CreateCustomerRequest request){

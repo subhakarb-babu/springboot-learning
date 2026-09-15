@@ -1,17 +1,19 @@
 package com.subhakar.springbootlearning.order_management.dto.order;
 
+import com.subhakar.springbootlearning.order_management.enums.OrderStatus;
+
 import java.math.BigDecimal;
 
 public class UpdateOrderRequest {
 
-    private String status;
+    private OrderStatus status;
     private BigDecimal totalAmount;
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

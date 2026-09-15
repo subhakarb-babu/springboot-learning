@@ -1,5 +1,6 @@
 package com.subhakar.springbootlearning.order_management.dto.order;
 
+import com.subhakar.springbootlearning.order_management.enums.OrderStatus;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
@@ -12,7 +13,7 @@ public class CreateOrderRequest {
     private UUID customerId;
 
     @NotNull
-    private String status;
+    private OrderStatus status;
 
     @NotNull
     @Positive
@@ -26,11 +27,11 @@ public class CreateOrderRequest {
         this.customerId = customerId;
     }
 
-    public String getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

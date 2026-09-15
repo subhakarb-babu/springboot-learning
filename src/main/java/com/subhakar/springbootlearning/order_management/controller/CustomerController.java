@@ -32,7 +32,7 @@ public class CustomerController{
 
     @GetMapping("{id}")
     public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("id") UUID id){
-        CustomerResponse response = customerService.getCustomer(id);
+        CustomerResponse response = customerService.getCustomerRes(id);
         return ResponseEntity.ok(response);
     }
 

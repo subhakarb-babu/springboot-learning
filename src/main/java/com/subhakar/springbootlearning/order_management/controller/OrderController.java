@@ -1,8 +1,6 @@
 package com.subhakar.springbootlearning.order_management.controller;
 
-import com.subhakar.springbootlearning.order_management.dto.order.CreateOrderRequest;
-import com.subhakar.springbootlearning.order_management.dto.order.OrderResponse;
-import com.subhakar.springbootlearning.order_management.dto.order.UpdateOrderRequest;
+import com.subhakar.springbootlearning.order_management.dto.order.*;
 import com.subhakar.springbootlearning.order_management.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -31,6 +29,13 @@ public class OrderController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(response);
+    }
+
+    @PostMapping("order_flow")
+    public ResponseEntity<CreateOrderFlowResponse> createOrderFlow(
+            @Valid @RequestBody CreateOrderFlowRequest request){
+        CreateOrderFlowResponse response = orderService.createOrderFlow(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{id}")
